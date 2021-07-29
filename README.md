@@ -18,6 +18,8 @@ services:
         restart: unless-stopped
         environment:
           - DISCORD_TOKEN=yourtokenhere
+          - ALLOWED_USERS=youruseridhere,yourotheruseridhere
         volumes:
           - /data/threads-bot:/app/settings
 ```
+Optionally you can add `SKIP_COMMANDS=TRUE` after starting for the first time to skip initialization of commands (this will slightly increase startup times and reduce bugs if you're restarting frequently).

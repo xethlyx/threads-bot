@@ -3,6 +3,7 @@ import { settingsGet, settingsSet } from './settings';
 
 const showDebug = process.env.DEBUG === 'TRUE';
 const skipCommands = process.env.SKIP_COMMANDS === 'TRUE';
+const allowedUsers = process.env.ALLOWED_USERS?.split(',');
 
 async function onInteraction(interaction: CommandInteraction) {
 	const inGuild = interaction.inGuild();
@@ -12,6 +13,10 @@ async function onInteraction(interaction: CommandInteraction) {
 
 	const guild = interaction.guild;
 	if (!guild) return interaction.reply('Guild not cached');
+
+	if (allowedUsers && !allowedUsers.includes(interaction.user.id)) {
+		return interaction.reply('You are not allowed to use this command.');
+	}
 
 	switch (interaction.commandName) {
 		case 'autothread': {
