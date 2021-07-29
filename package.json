@@ -4,8 +4,20 @@
 	"description": "A bot that automatically creates threads",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "pnpm run build && pnpm run start",
+		"start": "cd dist && node --trace-warnings index.js",
+		"build": "tsc"
 	},
-	"author": "",
-	"license": "ISC"
+	"author": "xethlyx",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^13.0.0-dev.5e433b5.1627473836",
+		"sqlite": "^4.0.23",
+		"sqlite3": "^5.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "^16.4.6",
+		"@types/sqlite3": "^3.1.7",
+		"typescript": "^4.3.5"
+	}
 }
